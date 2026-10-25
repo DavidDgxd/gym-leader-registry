@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #e3350d;
+  --secondary-color: #316ab2;
+  --bg-color: #f4f6f9;
+  --card-bg: #ffffff;
+  --text-color: #2c3e50;
+  --border-color: #e0e0e0;
+  --kanto-color: #e74c3c;
+  --johto-color: #27ae60;
+  --hoenn-color: #2980b9;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.content {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
