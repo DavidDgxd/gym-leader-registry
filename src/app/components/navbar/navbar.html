@@ -1,1 +1,16 @@
-<p>navbar works!</p>
+<nav class="navbar">
+  <div class="nav-brand">
+    <a routerLink="/home">⚡ Gym Leader Registry</a>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <a routerLink="/home" routerLinkActive="active">Home</a>
+    </li>
+    <li>
+      <a routerLink="/leaders" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Leaders</a>
+    </li>
+    <li>
+      <a routerLink="/leaders/new" routerLinkActive="active">Register Leader</a>
+    </li>
+  </ul>
+</nav>
