@@ -1,1 +1,28 @@
-<p>home works!</p>
+<div class="home-container">
+  <header class="hero">
+    <h1>Welcome to the Pokémon League Gym Leader Registry</h1>
+    <p>Official registry system for Gym Leaders in Kanto, Johto, and Hoenn.</p>
+  </header>
+
+  <section class="stats-grid">
+    <div class="stat-card kanto">
+      <h3>Kanto Region</h3>
+      <p class="count">{{ leaderService.kantoCount() }} Leaders</p>
+    </div>
+
+    <div class="stat-card johto">
+      <h3>Johto Region</h3>
+      <p class="count">{{ leaderService.johtoCount() }} Leaders</p>
+    </div>
+
+    <div class="stat-card hoenn">
+      <h3>Hoenn Region</h3>
+      <p class="count">{{ leaderService.hoennCount() }} Leaders</p>
+    </div>
+  </section>
+
+  <div class="actions">
+    <a routerLink="/leaders" class="btn btn-primary">View All Leaders</a>
+    <a routerLink="/leaders/new" class="btn btn-secondary">Register New Leader</a>
+  </div>
+</div>

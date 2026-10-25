@@ -1,1 +1,23 @@
-<p>leader-list works!</p>
+<div class="list-container">
+  <h2>Gym Leader Registry Records</h2>
+
+  <div class="filter-bar">
+    <span>Filter by Region:</span>
+    <button [class.active]="selectedRegion() === 'All'" (click)="setFilter('All')">All</button>
+    <button [class.active]="selectedRegion() === 'Kanto'" (click)="setFilter('Kanto')">Kanto</button>
+    <button [class.active]="selectedRegion() === 'Johto'" (click)="setFilter('Johto')">Johto</button>
+    <button [class.active]="selectedRegion() === 'Hoenn'" (click)="setFilter('Hoenn')">Hoenn</button>
+  </div>
+
+  <div class="leader-grid">
+    @for (leader of filteredLeaders(); track leader._id) {
+      <app-leader-card
+        [leader]="leader"
+        (edit)="onEditLeader($event)"
+        (remove)="onDeleteLeader($event)"
+      />
+    } @empty {
+      <p class="empty-msg">No Gym Leaders registered yet.</p>
+    }
+  </div>
+</div>
