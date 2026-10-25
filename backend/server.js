@@ -22,7 +22,16 @@ const gymLeaderSchema = new mongoose.Schema(
     town: { type: String, required: true },
     badge: { type: String, required: true },
     specialty: { type: String, required: true },
-    aceLevel: { type: Number, required: true, min: 1, max: 100 },
+    aceLevel: { 
+        type: Number, 
+        required: true, 
+        min: 1, 
+        max: 100,
+        validate: {
+            validator: Number.isInteger,
+            message: '{VALUE} is not a whole number (integer)'
+        }
+    },
     motto: { type: String, maxlength: 150, default: '' },
   },
   { timestamps: true }

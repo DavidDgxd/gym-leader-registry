@@ -25,7 +25,7 @@ export class LeaderFormComponent implements OnInit {
     town: ['', Validators.required],
     badge: ['', Validators.required],
     specialty: ['', Validators.required],
-    aceLevel: [1, [Validators.required, Validators.min(1), Validators.max(100)]],
+    aceLevel: [1, [Validators.required, Validators.min(1), Validators.max(100), Validators.pattern(/^[0-9]+$/)]],
     motto: ['', Validators.maxLength(150)]
   });
 
@@ -67,18 +67,25 @@ export class LeaderFormComponent implements OnInit {
 
     if (this.isEditMode() && this.leaderId()) {
       this.leaderService.updateLeader(this.leaderId()!, payload).subscribe({
-        next: () => this.router.navigate(['/leaders']),
+        next: () => {
+          this.leaderForm.reset();
+          this.router.navigate(['/leaders']);
+        },
         error: (err) => console.error('Update failed:', err)
       });
     } else {
       this.leaderService.addLeader(payload).subscribe({
-        next: () => this.router.navigate(['/leaders']),
+        next: () => {
+          this.leaderForm.reset();
+          this.router.navigate(['/leaders']);
+        },
         error: (err) => console.error('Add failed:', err)
       });
     }
   }
 
   protected onCancel(): void {
+    this.leaderForm.reset();
     this.router.navigate(['/leaders']);
   }
 }
