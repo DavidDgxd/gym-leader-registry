@@ -1,1 +1,69 @@
-<p>leader-form works!</p>
+<div class="form-container">
+  <h2>{{ isEditMode() ? 'Edit Gym Leader' : 'Register a Gym Leader' }}</h2>
+
+  <form [formGroup]="leaderForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Trainer Name *</label>
+      <input id="name" formControlName="name" placeholder="e.g. Brock" />
+      @if (isFieldInvalid('name')) {
+        <small class="error-msg">Name is required and must be at least 2 characters.</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="region">Region *</label>
+      <select id="region" formControlName="region">
+        <option value="Kanto">Kanto</option>
+        <option value="Johto">Johto</option>
+        <option value="Hoenn">Hoenn</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="town">Town / City *</label>
+      <input id="town" formControlName="town" placeholder="e.g. Pewter City" />
+      @if (isFieldInvalid('town')) {
+        <small class="error-msg">Town or City is required.</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="badge">Badge Name *</label>
+      <input id="badge" formControlName="badge" placeholder="e.g. Boulder Badge" />
+      @if (isFieldInvalid('badge')) {
+        <small class="error-msg">Badge name is required.</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="specialty">Type Specialty *</label>
+      <input id="specialty" formControlName="specialty" placeholder="e.g. Rock" />
+      @if (isFieldInvalid('specialty')) {
+        <small class="error-msg">Type specialty is required.</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="aceLevel">Ace Level (1-100) *</label>
+      <input id="aceLevel" type="number" formControlName="aceLevel" placeholder="14" />
+      @if (isFieldInvalid('aceLevel')) {
+        <small class="error-msg">Ace level must be a whole number between 1 and 100.</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="motto">Motto (Optional)</label>
+      <textarea id="motto" formControlName="motto" rows="3" placeholder="Enter leader motto..."></textarea>
+      @if (isFieldInvalid('motto')) {
+        <small class="error-msg">Motto must not exceed 150 characters.</small>
+      }
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-submit" [disabled]="leaderForm.invalid">
+        {{ isEditMode() ? 'Save Changes' : 'Add Leader' }}
+      </button>
+      <button type="button" class="btn-cancel" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
+</div>
